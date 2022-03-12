@@ -1,9 +1,6 @@
 package com.chapagaintechnologies.sfgdi;
 
-import com.chapagaintechnologies.sfgdi.controller.ConstructorInjectedController;
-import com.chapagaintechnologies.sfgdi.controller.MyController;
-import com.chapagaintechnologies.sfgdi.controller.PropertyInjectedController;
-import com.chapagaintechnologies.sfgdi.controller.SetterInjectedController;
+import com.chapagaintechnologies.sfgdi.controller.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -30,6 +27,9 @@ public class SfgDiApplication {
         ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
         System.out.println(constructorInjectedController.getGreeting());
         System.out.println("------------------- constructor");
+
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.sayGreeting());
        /* propertyInjectedController.greetingService = new GreetingServiceImpl();
 
         SetterInjectedController setterInjectedController = new SetterInjectedController();
