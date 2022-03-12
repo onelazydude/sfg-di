@@ -1,10 +1,8 @@
 package com.chapagaintechnologies.sfgdi.controller;
 
-import com.chapagaintechnologies.sfgdi.service.GreetingServiceImpl;
+import com.chapagaintechnologies.sfgdi.service.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SetterInjectedControllerTest {
 
@@ -13,7 +11,7 @@ class SetterInjectedControllerTest {
     @BeforeEach
     void setUp() {
         setterInjectedController = new SetterInjectedController();
-        setterInjectedController.setGreetingService(new GreetingServiceImpl());
+        setterInjectedController.setGreetingService(new ConstructorGreetingService());
 
     }
 
