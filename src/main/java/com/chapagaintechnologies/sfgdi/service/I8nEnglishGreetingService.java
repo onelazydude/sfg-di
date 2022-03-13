@@ -1,11 +1,15 @@
 package com.chapagaintechnologies.sfgdi.service;
 
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
+import com.chapagaintechnologies.sfgdi.repository.EnglishGreetingRepository;
 
-@Profile("EN")
-@Service("i8nGreetingService")
 public class I8nEnglishGreetingService implements GreetingService{
+
+    private final EnglishGreetingRepository englishGreetingRepository;
+
+    public I8nEnglishGreetingService(EnglishGreetingRepository englishGreetingRepository) {
+        this.englishGreetingRepository = englishGreetingRepository;
+    }
+
     @Override
     public String sayGreeting() {
         return "Hello World - EN";
