@@ -48,4 +48,21 @@ public class GreetingServiceConfig {
         I8nSpanishGreetingService i8nSpanishGreetingService(){
             return new I8nSpanishGreetingService();
         }
+
+        @Bean
+        PetServiceFactory petServiceFactory(){
+            return new PetServiceFactory();
+        }
+
+        @Profile("cat")
+        @Bean
+        PetService dogPetService(PetServiceFactory petServiceFactory){
+            return petServiceFactory().getPetService("dog");
+        }
+
+        @Profile({"dog", "default"})
+        @Bean
+        PetService catPetService(PetServiceFactory petServiceFactory){
+            return petServiceFactory().getPetService("cat");
+        }
 }
