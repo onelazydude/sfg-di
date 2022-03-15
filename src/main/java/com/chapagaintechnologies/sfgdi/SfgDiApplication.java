@@ -1,5 +1,6 @@
 package com.chapagaintechnologies.sfgdi;
 
+import com.chapagaintechnologies.datasource.AnotherMockDatabase;
 import com.chapagaintechnologies.datasource.FakeDataSource;
 import com.chapagaintechnologies.sfgdi.controller.*;
 import org.springframework.boot.SpringApplication;
@@ -34,11 +35,19 @@ public class SfgDiApplication {
         I18nController i18nController = (I18nController) ctx.getBean("i18nController");
         System.out.println(i18nController.sayGreeting());
 
+        System.out.println("------------------------------------------------------");
+
+
         FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
         System.out.println(fakeDataSource.getUsername());
         System.out.println(fakeDataSource.getPassword());
         System.out.println(fakeDataSource.getJdbcurl());
 
+
+        AnotherMockDatabase anotherMockDatabase = ctx.getBean(AnotherMockDatabase.class);
+        System.out.println(anotherMockDatabase.getUsername());
+        System.out.println(anotherMockDatabase.getPassword());
+        System.out.println(anotherMockDatabase.getJdbcurl());
        /* propertyInjectedController.greetingService = new GreetingServiceImpl();
 
         SetterInjectedController setterInjectedController = new SetterInjectedController();

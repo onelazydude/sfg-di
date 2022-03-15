@@ -1,5 +1,6 @@
 package com.chapagaintechnologies.sfgdi.config;
 
+import com.chapagaintechnologies.datasource.AnotherMockDatabase;
 import com.chapagaintechnologies.datasource.FakeDataSource;
 import com.chapagaintechnologies.sfgdi.repository.EnglishGreetingRepository;
 import com.chapagaintechnologies.sfgdi.repository.EnglishGreetingRepositoryImpl;
@@ -74,5 +75,14 @@ public class GreetingServiceConfig {
             fakeSource.setPassword(password);
             fakeSource.setJdbcurl(jdbcurl);
             return fakeSource;
+        }
+
+        @Bean
+        AnotherMockDatabase anotherMockDatabase(@Value("${mock.username}") String username, @Value("${mock.password}") String password, @Value("${mock.jdbcurl}") String jdbcurl){
+            AnotherMockDatabase mockDatabase = new AnotherMockDatabase();
+            mockDatabase.setUsername(username);
+            mockDatabase.setPassword(password);
+            mockDatabase.setJdbcurl(jdbcurl);
+            return mockDatabase;
         }
 }
