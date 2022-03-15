@@ -1,10 +1,13 @@
 package com.chapagaintechnologies.sfgdi.config;
 
+import com.chapagaintechnologies.datasource.FakeDataSource;
 import com.chapagaintechnologies.sfgdi.repository.EnglishGreetingRepository;
 import com.chapagaintechnologies.sfgdi.repository.EnglishGreetingRepositoryImpl;
 import com.chapagaintechnologies.sfgdi.service.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
+@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
@@ -62,5 +65,14 @@ public class GreetingServiceConfig {
         @Bean
         PetService catPetService(PetServiceFactory petServiceFactory){
             return petServiceFactory().getPetService("cat");
+        }
+
+        @Bean
+        FakeDataSource fakeDataSource(@Value("${fake.username}") String username, @Value("${fake.password}") String password, @Value("${fake.jdbcurl}") String jdbcurl){
+            FakeDataSource fakeSource = new FakeDataSource();
+            fakeSource.setUsername(username);
+            fakeSource.setPassword(password);
+            fakeSource.setJdbcurl(jdbcurl);
+            return fakeSource;
         }
 }
